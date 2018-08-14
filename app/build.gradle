@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     defaultConfig {
-        applicationId "com.fjycnet.main"
+        applicationId "com.fjycnet.rongclouddemo"
         minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
@@ -16,13 +16,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    compile project(':IMKit')
+    implementation(name: 'HMS-SDK-2.4.0.300', ext: 'aar')
+}
+
+repositories {
+    flatDir { dirs '../app/aars' }
+    maven {
+        url 'https://maven.google.com/'
+        name 'Google'
+    }
 }
