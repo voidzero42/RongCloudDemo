@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fjycnet.rongclouddemo.R;
@@ -18,8 +18,7 @@ import io.rong.imlib.model.Message;
 
 public class MyDynamicConversationListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnAddMsgListener;
-    private Button btnCancelMsgListener;
+    private TextView tvMsg;
     private boolean isRecvMsg = false;
     private RongIMClient.OnReceiveMessageListener onReceiveMessageListener;
 
@@ -53,13 +52,25 @@ public class MyDynamicConversationListActivity extends AppCompatActivity impleme
      * 接收消息监听器的实现，所有接收到的消息、通知、状态都经由此处设置的监听器处理。包括私聊消息、群组消息、聊天室消息以及各种状态。
      */
     private void addReceiveMessageListener() {
-        isRecvMsg = true;
         Toast.makeText(this, "添加接收消息监听器", Toast.LENGTH_SHORT).show();
         if (onReceiveMessageListener == null) {
             onReceiveMessageListener = new RongIMClient.OnReceiveMessageListener() {
+                /**
+                 * 收到消息的处理。
+                 *
+                 * @param message 收到的消息实体。
+                 * @param left    剩余未拉取消息数目。
+                 * @return 收到消息是否处理完成，true 表示自己处理铃声和后台通知，false 走融云默认处理方式。
+                 */
                 @Override
-                public boolean onReceived(Message message, int i) {
-                    Toast.makeText(MyDynamicConversationListActivity.this, "Message=" + message.getContent() + ",i=" + i, Toast.LENGTH_SHORT).show();
+                public boolean onReceived(final Message message, final int left) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(MyDynamicConversationListActivity.this, "Message=" + message.getContent().toString() + ",left=" + left, Toast.LENGTH_SHORT).show();
+                            tvMsg.setText("Message=" + message.getContent().toString() + ",left=" + left);
+                        }
+                    });
                     return isRecvMsg;
                 }
             };
@@ -68,18 +79,27 @@ public class MyDynamicConversationListActivity extends AppCompatActivity impleme
     }
 
     /**
-     * 不再接收消息
+     * 自己处理铃声和后台通知
      */
-    private void cancelReceiveMessageListener() {
-        Toast.makeText(this, "取消接收消息监听器", Toast.LENGTH_SHORT).show();
+    private void customHanleRing() {
+        Toast.makeText(this, "自己处理铃声和后台通知", Toast.LENGTH_SHORT).show();
+        isRecvMsg = true;
+    }
+
+    /**
+     * 自己处理铃声和后台通知
+     */
+    private void defaultHanleRing() {
+        Toast.makeText(this, "让融云默认处理铃声和后台通知", Toast.LENGTH_SHORT).show();
         isRecvMsg = false;
     }
 
     private void initView() {
-        btnAddMsgListener = findViewById(R.id.btnAddMsgListener);
-        btnAddMsgListener.setOnClickListener(this);
-        btnCancelMsgListener = findViewById(R.id.btnCancelMsgListener);
-        btnCancelMsgListener.setOnClickListener(this);
+        tvMsg = findViewById(R.id.tvMsg);
+        findViewById(R.id.btnAddMsgListener).setOnClickListener(this);
+        findViewById(R.id.btnCustomHandleRing).setOnClickListener(this);
+        findViewById(R.id.btnDefaultHandleRing).setOnClickListener(this);
+
     }
 
     @Override
@@ -88,8 +108,11 @@ public class MyDynamicConversationListActivity extends AppCompatActivity impleme
             case R.id.btnAddMsgListener:
                 addReceiveMessageListener();
                 break;
-            case R.id.btnCancelMsgListener:
-                cancelReceiveMessageListener();
+            case R.id.btnCustomHandleRing:
+                customHanleRing();
+                break;
+            case R.id.btnDefaultHandleRing:
+                defaultHanleRing();
                 break;
         }
     }

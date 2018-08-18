@@ -38,14 +38,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="连接结果: ( 连接需要先获取token ) " />
+            android:text="连接结果: ( 连接前先获取token ) " />
 
         <TextView
             android:id="@+id/tvResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ff0000"
-            tools:text="连接成功" />
+            android:text="尚未连接"
+            android:textColor="#ff0000" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -57,8 +57,8 @@
             android:id="@+id/tvConnStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ff0000"
-            tools:text="连接成功" />
+            android:text="尚未连接"
+            android:textColor="#ff0000" />
 
         <Button
             android:id="@+id/btnJumpConversationList"

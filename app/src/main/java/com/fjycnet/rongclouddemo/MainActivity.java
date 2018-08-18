@@ -210,6 +210,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivity(intent);
     }
 
+    /**
+     * 打开动态配置的会话界面
+     */
+    private void jumpDynamicConversation() {
+        RongIM.getInstance().startConversation(this, Conversation.ConversationType.PRIVATE, "129", "标题");
+    }
+
     private void initView() {
         tvInit = findViewById(R.id.tvInit);
         tvResult = findViewById(R.id.tvResult);
@@ -219,6 +226,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btnConnect).setOnClickListener(this);
         findViewById(R.id.btnDisconnect).setOnClickListener(this);
         findViewById(R.id.btnJumpConversationList).setOnClickListener(this);
+        findViewById(R.id.btnJumpDynamicConversation).setOnClickListener(this);
         btnJumpDynamicConversationList.setOnClickListener(this);
     }
 
@@ -239,6 +247,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnJumpDynamicConversationList:
                 jumpDynamicConversationList();//打开动态配置的聊天列表
+                break;
+            case R.id.btnJumpDynamicConversation:
+                jumpDynamicConversation();
                 break;
         }
     }

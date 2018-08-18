@@ -19,14 +19,27 @@
         android:text="添加接收消息监听器" />
 
     <Button
-        android:id="@+id/btnCancelMsgListener"
+        android:id="@+id/btnCustomHandleRing"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="取消接收消息监听器" />
+        android:text="自己处理铃声和后台通知" />
+    <Button
+        android:id="@+id/btnDefaultHandleRing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="默认融云处理铃声和后台通知" />
     <TextView
         android:layout_width="wrap_content"
-        android:text="注意:正常使用时需要把添加监听器放到Application中"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="注意:正常使用时需要把添加监听器放到Application中" />
+
+    <TextView
+        android:id="@+id/tvMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="收到的消息"
+        android:textColor="#333333" />
+
     <FrameLayout
         android:id="@+id/rong_content"
         android:layout_width="match_parent"
