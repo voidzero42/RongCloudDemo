@@ -1,12 +1,10 @@
-package com.woai.thirdsdk.rong;
+package com.fjycnet.rongclouddemo.util;
 
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-import android.net.Uri;
 import android.util.Log;
 
-import com.woai.common.util.YcToastHelper;
 import com.xiaomi.mipush.sdk.MiPushClient;
 
 import java.util.List;
@@ -131,13 +129,13 @@ public class RongUtil {
             @Override
             public void onTokenIncorrect() {
                 Log.e("LoginActivity", "onTokenIncorrect");
-                YcToastHelper.get()._toast("融云Token错误");
+//                YcToastHelper.get()._toast("融云Token错误");
             }
 
             @Override
             public void onSuccess(String userid) {
                 Log.e("LoginActivity", "连接融云IM成功,userid=" + userid);
-                YcToastHelper.get()._toast("连接融云IM成功,userid=" + userid);
+//                YcToastHelper.get()._toast("连接融云IM成功,userid=" + userid);
                 if (listener != null) {
                     listener.jumpMain();
                 }
@@ -148,7 +146,7 @@ public class RongUtil {
 
             @Override
             public void onError(RongIMClient.ErrorCode errorCode) {
-                YcToastHelper.get()._toast("连接融云失败,errorCode=" + errorCode);
+//                YcToastHelper.get()._toast("连接融云失败,errorCode=" + errorCode);
                 Log.e("LoginActivity", "ErrorCode");
             }
 

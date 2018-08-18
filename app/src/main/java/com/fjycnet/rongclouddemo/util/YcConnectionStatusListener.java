@@ -1,4 +1,4 @@
-package com.woai.thirdsdk.rong;
+package com.fjycnet.rongclouddemo.util;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,9 +6,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
-
-import com.woai.common.util.IntentHelper;
-import com.woai.vichat.login.act.LoginActivity;
 
 import io.rong.imlib.RongIMClient;
 
@@ -50,14 +47,14 @@ public class YcConnectionStatusListener implements RongIMClient.ConnectionStatus
                 break;
             case KICKED_OFFLINE_BY_OTHER_CLIENT://用户账户在其他设备登录，本机会被踢掉线
                 Log.e("YCS", "用户账户在其他设备登录");
-                new Handler(Looper.getMainLooper())
-                        .post(new Runnable() {
-                            @Override
-                            public void run() {
-                                IntentHelper.jumpWithExtra(mContext, LoginActivity.class, "TYPE", "RELOGIN", Intent.FLAG_ACTIVITY_NEW_TASK |
-                                        Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                            }
-                        });
+//                new Handler(Looper.getMainLooper())
+//                        .post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                IntentHelper.jumpWithExtra(mContext, LoginActivity.class, "TYPE", "RELOGIN", Intent.FLAG_ACTIVITY_NEW_TASK |
+//                                        Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+//                            }
+//                        });
                 break;
         }
     }

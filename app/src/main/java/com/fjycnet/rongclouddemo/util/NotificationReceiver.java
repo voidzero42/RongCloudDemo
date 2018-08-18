@@ -1,4 +1,4 @@
-package com.woai.thirdsdk.rong;
+package com.fjycnet.rongclouddemo.util;
 
 import android.content.Context;
 import android.util.Log;
