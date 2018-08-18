@@ -34,6 +34,9 @@ dependencies {
     implementation(name: 'HMS-SDK-2.4.0.300', ext: 'aar')
 }
 
+
+
+
 repositories {
     flatDir { dirs '../app/aars' }
     maven {

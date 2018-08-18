@@ -1,48 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="15dp"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <Button
-        android:id="@+id/btnConnect"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="连接融云服务器" />
-    <Button
-        android:id="@+id/btnDisconnect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="断开融云服务器" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="连接结果:" />
+        android:layout_margin="15dp"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#ff0000"
-        tools:text="连接成功" />
+        <Button
+            android:id="@+id/btnInit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="第一步:初始化融云SDK" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="连接状态监听器:" />
+        <Button
+            android:id="@+id/btnConnect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="第二步:连接融云服务器" />
 
-    <TextView
-        android:id="@+id/tvConnStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="#ff0000"
-        tools:text="连接成功" />
+        <Button
+            android:id="@+id/btnDisconnect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="断开融云服务器" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvInit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="尚未初始化融云SDK" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="连接结果: ( 连接需要先获取token ) " />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            tools:text="连接成功" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="连接状态监听器:" />
+
+        <TextView
+            android:id="@+id/tvConnStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff0000"
+            tools:text="连接成功" />
+
+        <Button
+            android:id="@+id/btnJumpConversationList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开静态配置的聊天列表" />
+
+        <Button
+            android:id="@+id/btnJumpDynamicConversationList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开动态配置的聊天列表" />
+
+        <Button
+            android:id="@+id/btnJumpConversation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开静态配置的单聊界面" />
+
+        <Button
+            android:id="@+id/btnJumpDynamicConversation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="打开动态配置的单聊界面" />
+    </LinearLayout>
+</ScrollView>

@@ -49,28 +49,25 @@
             </intent-filter>
         </activity>
 
-
         <service
             android:name="io.rong.imlib.ipc.RongService"
             android:process=":ipc" />
-        <service android:name="io.rong.imlib.ReConnectService" />
 
         <receiver android:name="io.rong.imlib.ConnectChangeReceiver" />
-
         <receiver
             android:name="io.rong.imlib.HeartbeatReceiver"
             android:process=":ipc" />
 
-        <!--<receiver-->
-        <!--android:name="com.fjycnet.rongclouddemo.thirdsdk.rong.NotificationReceiver"-->
-        <!--android:exported="true">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="io.rong.push.intent.MESSAGE_ARRIVED" />-->
-        <!--<action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" />-->
-        <!--<action android:name="io.rong.push.intent.MESSAGE_CLICKED" />-->
-        <!--<action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" />-->
-        <!--</intent-filter>-->
-        <!--</receiver>-->
+        <!-- <receiver -->
+        <!-- android:name="com.fjycnet.rongclouddemo.thirdsdk.rong.NotificationReceiver" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="io.rong.push.intent.MESSAGE_ARRIVED" /> -->
+        <!-- <action android:name="io.rong.push.intent.MI_MESSAGE_ARRIVED" /> -->
+        <!-- <action android:name="io.rong.push.intent.MESSAGE_CLICKED" /> -->
+        <!-- <action android:name="io.rong.push.intent.MI_MESSAGE_CLICKED" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -81,6 +78,37 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
         </provider>
+
+        <!-- 静态配置的会话列表 host要改成自己的包名 -->
+        <activity android:name=".ui.MyStaticConversationListActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.fjycnet.rongclouddemo"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+
+        <!-- 动态配置的会话列表 host要改成自己的包名 -->
+        <activity android:name=".ui.MyDynamicConversationListActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.fjycnet.rongclouddemo"
+                    android:pathPrefix="/conversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.MessageApiActivity" />
     </application>
 
 </manifest>
