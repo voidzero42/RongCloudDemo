@@ -1,4 +1,4 @@
-package com.fjycnet.rongclouddemo.ui;
+package com.fjycnet.rongclouddemo.list;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.fjycnet.rongclouddemo.R;
 
 /**
- * 会话列表
+ * 静态配置的会话列表
  * <p>
  * 配置 intent-filter：
  * <p>

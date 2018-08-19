@@ -1,4 +1,4 @@
-package com.fjycnet.rongclouddemo.ui;
+package com.fjycnet.rongclouddemo.list;
 
 import android.net.Uri;
 import android.support.v4.app.FragmentTransaction;
@@ -16,6 +16,9 @@ import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
 import io.rong.imlib.model.Message;
 
+/**
+ * 动态配置的会话列表
+ */
 public class MyDynamicConversationListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tvMsg;

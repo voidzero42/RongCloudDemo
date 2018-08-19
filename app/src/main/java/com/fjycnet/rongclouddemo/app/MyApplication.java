@@ -1,4 +1,4 @@
-package com.fjycnet.rongclouddemo;
+package com.fjycnet.rongclouddemo.app;
 
 import android.app.ActivityManager;
 import android.app.Application;

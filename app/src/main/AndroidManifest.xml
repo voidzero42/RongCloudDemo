@@ -34,14 +34,14 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -80,7 +80,7 @@
         </provider>
 
         <!-- 静态配置的会话列表 host要改成自己的包名 -->
-        <activity android:name=".ui.MyStaticConversationListActivity">
+        <activity android:name=".list.MyStaticConversationListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -94,10 +94,12 @@
         </activity>
 
         <!-- 动态配置的会话列表 host要改成自己的包名 -->
-        <activity android:name=".ui.MyDynamicConversationListActivity">
+        <activity android:name=".list.MyDynamicConversationListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.fjycnet.rongclouddemo"
                     android:pathPrefix="/conversationlist"
@@ -107,18 +109,19 @@
 
         <!-- 动态配置的会话界面 host要改成自己的包名 -->
         <activity android:name=".ui.MyDynamicConversationActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data
                     android:host="com.fjycnet.rongclouddemo"
                     android:pathPrefix="/conversation/"
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ui.MessageApiActivity" />
+        <activity android:name=".ui.SetUserIdActivity"></activity>
     </application>
 
 </manifest>

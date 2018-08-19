@@ -1,4 +1,4 @@
-package com.fjycnet.rongclouddemo;
+package com.fjycnet.rongclouddemo.main;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,16 +9,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fjycnet.rongclouddemo.ui.MyDynamicConversationListActivity;
+import com.fjycnet.rongclouddemo.R;
+import com.fjycnet.rongclouddemo.list.MyDynamicConversationListActivity;
+import com.fjycnet.rongclouddemo.ui.SetUserIdActivity;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import io.rong.imkit.RongIM;
-import io.rong.imlib.OnReceiveMessageListener;
 import io.rong.imlib.RongIMClient;
 import io.rong.imlib.model.Conversation;
-import io.rong.imlib.model.Message;
 
 /**
  * 官方文档:
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvInit;
     private TextView tvResult;
     private TextView tvConnStatus;
+    private TextView tvToken;
     private Button btnJumpDynamicConversationList;
     /**
      * 暂时从融云平台的API接口获取token
@@ -67,11 +68,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 连接融云服务器
+     * <p>
+     * 融云控制台API调用 https://developer.rongcloud.cn/apitool
      */
     private void connectRongServer() {
         // 从服务端获取融云token (暂时先用控制台的API获取)
         //130的token
-        rongToken = "Jy44d4/raKY+laI80oAyk9YVA0ZGn0MhZXQ2jZpWm2z+VEIa3F3jgrE/uPbSfQ2WTH5+R4S0kWGHJLgJ3m1BRQ==";
+        rongToken = "V2NbHPSo4I/NST2BCzRGfdYVA0ZGn0MhZXQ2jZpWm2z+VEIa3F3jgi5GudbepRJLaelFyw1YmCmHJLgJ3m1BRQ==";
+        tvToken.setText("融云token = " + rongToken);
         //129的token
 //        rongToken = "1x3bPSUKSZSdiqy+SsioLdYVA0ZGn0MhZXQ2jZpWm2z+VEIa3F3jgk1t/aMGe18FeS4mYztEZ+GHJLgJ3m1BRQ==";
 
@@ -107,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 设置融云连接状态监听器
+     * TODO: 需要放到Application里,监听全局
      */
     private void setConnectionStatusListener() {
         RongIM.setConnectionStatusListener(new RongIMClient.ConnectionStatusListener() {
@@ -213,20 +218,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 打开动态配置的会话界面
      */
-    private void jumpDynamicConversation() {
-        RongIM.getInstance().startConversation(this, Conversation.ConversationType.PRIVATE, "129", "标题");
+    private void jumpSetConversation() {
+        startActivity(new Intent(this, SetUserIdActivity.class));
     }
 
     private void initView() {
         tvInit = findViewById(R.id.tvInit);
         tvResult = findViewById(R.id.tvResult);
         tvConnStatus = findViewById(R.id.tvConnStatus);
+        tvToken = findViewById(R.id.tvToken);
         btnJumpDynamicConversationList = findViewById(R.id.btnJumpDynamicConversationList);
         findViewById(R.id.btnInit).setOnClickListener(this);
         findViewById(R.id.btnConnect).setOnClickListener(this);
         findViewById(R.id.btnDisconnect).setOnClickListener(this);
         findViewById(R.id.btnJumpConversationList).setOnClickListener(this);
-        findViewById(R.id.btnJumpDynamicConversation).setOnClickListener(this);
+        findViewById(R.id.btnJumpSetConversation).setOnClickListener(this);
         btnJumpDynamicConversationList.setOnClickListener(this);
     }
 
@@ -248,8 +254,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnJumpDynamicConversationList:
                 jumpDynamicConversationList();//打开动态配置的聊天列表
                 break;
-            case R.id.btnJumpDynamicConversation:
-                jumpDynamicConversation();
+            case R.id.btnJumpSetConversation:
+                jumpSetConversation();//配置会话界面
                 break;
         }
     }

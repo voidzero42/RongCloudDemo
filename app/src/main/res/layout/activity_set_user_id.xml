@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!" />
+
+    <EditText
+        android:id="@+id/etUid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入聊天对象的UID" />
+
+    <EditText
+        android:id="@+id/etChatTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入聊天标题" />
+
+    <Button
+        android:id="@+id/btnOpenDynamicConversationActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="打开动态配置的会话界面" />
+
+</LinearLayout>
