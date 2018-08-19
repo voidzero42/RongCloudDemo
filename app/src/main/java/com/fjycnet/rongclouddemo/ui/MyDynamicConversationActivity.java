@@ -17,6 +17,8 @@ import io.rong.imlib.model.Conversation;
  * 会话界面
  * <p>
  * http://www.rongcloud.cn/docs/android.html#integration_conversation_config
+ *
+ * @author 绯若虚无
  */
 public class MyDynamicConversationActivity extends AppCompatActivity {
     //目标 Id

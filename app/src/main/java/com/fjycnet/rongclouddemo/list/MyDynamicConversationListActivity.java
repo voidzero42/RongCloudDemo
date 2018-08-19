@@ -18,6 +18,8 @@ import io.rong.imlib.model.Message;
 
 /**
  * 动态配置的会话列表
+ *
+ * @author 绯若虚无
  */
 public class MyDynamicConversationListActivity extends AppCompatActivity implements View.OnClickListener {
 

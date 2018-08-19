@@ -15,7 +15,8 @@ import io.rong.imlib.model.Message;
 /**
  * APP
  * (这里只做融云IM的功能测试,不做代码封装,有需要自己封装里面的函数)
- * Created by ZeroVoid on 2018-8-14.
+ *
+ * @author 绯若虚无 on 2018-8-14.
  */
 
 public class MyApplication extends Application {

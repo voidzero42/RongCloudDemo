@@ -34,6 +34,8 @@ import io.rong.imlib.model.Conversation;
  * <p>
  * 源码:sealtalk/sealtalk-android
  * https://github.com/sealtalk/sealtalk-android
+ *
+ * @author 绯若虚无
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 初始化融云
+     * 初始化融云 (正常是在Application中初始化,此处测试用)
      */
     private void initRongCloud() {
         // RongIMClient.init(this); 区别是什么?
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 连接融云服务器
+     * 连接融云服务器 (正常是在登录获取token后调此函数)
      * <p>
      * 融云控制台API调用 https://developer.rongcloud.cn/apitool
      */
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //静态函数
         RongIM.connect(rongToken, new RongIMClient.ConnectCallback() {
             @Override
-            public void onTokenIncorrect() {//TODO 需要重新获取Token
+            public void onTokenIncorrect() {//TODO 此时需要重新获取Token,此处省略
                 Log.e("rongclouddemo app", "onTokenIncorrect");
                 tvResult.setText("onTokenIncorrect,需要重新获取Token");
             }
@@ -110,8 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * 设置融云连接状态监听器
-     * TODO: 需要放到Application里,监听全局
+     * 设置融云连接状态监听器 (需要放到Application里,监听全局,此处测试用)
      */
     private void setConnectionStatusListener() {
         RongIM.setConnectionStatusListener(new RongIMClient.ConnectionStatusListener() {
@@ -184,30 +185,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     /**
-     * 打开静态配置的聊天列表
+     * 打开会话列表 (静态配置)
      * <p>
      * 文档地址:
      * http://www.rongcloud.cn/docs/android.html#integration_conversation_start
      * http://www.rongcloud.cn/docs/android.html#other_fragment
      */
     private void jumpStaticConversationListActivity() {
+        //TODO: 使用RongIM方式打开和使用Intent方式打开有什么区别?
 //        Intent intent = new Intent();
 //        intent.setClass(MainActivity.this, MyStaticConversationListActivity.class);
 //        startActivity(intent);
-        Map<String, Boolean> map = new HashMap<>();
-        map.put(Conversation.ConversationType.PRIVATE.getName(), false); // 会话列表需要显示私聊会话, 第二个参数 true 代表私聊会话需要聚合显示
-        map.put(Conversation.ConversationType.GROUP.getName(), false);  // 会话列表需要显示群组会话, 第二个参数 false 代表群组会话不需要聚合显示
-        try {
-            RongIM.getInstance().startConversationList(getApplicationContext(), map);
-        } catch (ExceptionInInitializerError e) {
-            e.printStackTrace();
-            tvInit.setText("请先初始化融云SDK");
-            Toast.makeText(this, "请先初始化融云SDK", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, "会话列表在Manifest中只能配置一个", Toast.LENGTH_SHORT).show();
+        if (false) {
+            Map<String, Boolean> map = new HashMap<>();
+            map.put(Conversation.ConversationType.PRIVATE.getName(), false); // 会话列表需要显示私聊会话, 第二个参数 true 代表私聊会话需要聚合显示
+            map.put(Conversation.ConversationType.GROUP.getName(), false);  // 会话列表需要显示群组会话, 第二个参数 false 代表群组会话不需要聚合显示
+            try {
+                RongIM.getInstance().startConversationList(getApplicationContext(), map);
+            } catch (ExceptionInInitializerError e) {
+                e.printStackTrace();
+                tvInit.setText("请先初始化融云SDK");
+                Toast.makeText(this, "请先初始化融云SDK", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
     /**
-     * 打开动态配置的聊天列表
+     * 打开会话列表 (动态配置)
      */
     private void jumpDynamicConversationList() {
         Intent intent = new Intent();
@@ -221,6 +227,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void jumpSetConversation() {
         startActivity(new Intent(this, SetUserIdActivity.class));
     }
+
+    //------------------------------------------
 
     private void initView() {
         tvInit = findViewById(R.id.tvInit);

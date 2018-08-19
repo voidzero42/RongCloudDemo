@@ -15,6 +15,8 @@ import com.fjycnet.rongclouddemo.R;
  * 您的会话列表 Activity 下面配置 intent-filter，
  * 其中，android:host 是您应用的包名，
  * 需要手动修改，其他请保持不变。
+ *
+ *  @author 绯若虚无
  */
 public class MyStaticConversationListActivity extends AppCompatActivity {
 

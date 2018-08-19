@@ -12,6 +12,11 @@ import com.fjycnet.rongclouddemo.R;
 import io.rong.imkit.RongIM;
 import io.rong.imlib.model.Conversation;
 
+/**
+ * 设置会话界面
+ *
+ * @author 绯若虚无
+ */
 public class SetUserIdActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etUid;
